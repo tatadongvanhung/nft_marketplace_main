@@ -17,11 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/';
-
-    protected $namespaceAdmin = 'App\Http\Controllers\Admin';
-
-    protected $namespaceUser = 'App\Http\Controllers\User';
+    public const HOME = '/home';
 
     /**
      * The controller namespace for the application.
@@ -41,47 +37,16 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
-        // $this->routes(function () {
-        //     Route::prefix('api')
-        //         ->middleware('api')
-        //         ->namespace($this->namespace)
-        //         ->group(base_path('routes/api.php'));
+        $this->routes(function () {
+            Route::prefix('api')
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/api.php'));
 
-        //     Route::middleware('web')
-        //         ->namespace($this->namespace)
-        //         ->group(base_path('routes/web.php'));
-        // });
-        $this->mapAdminRoutes();
-
-        $this->mapUserRoutes();
-    }
-
-     /**
-     * Define the "web" routes for the web.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapAdminRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->namespaceAdmin)
-            ->group(base_path('routes/admin.php'));
-    }
-
-    /**
-     * Define the "api" routes for the web.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapUserRoutes()
-    {
-        Route::middleware('web')
-            ->namespace($this->namespaceUser)
-            ->group(base_path('routes/user.php'));
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/web.php'));
+        });
     }
 
     /**

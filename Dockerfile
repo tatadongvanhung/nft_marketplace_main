@@ -40,5 +40,7 @@ RUN curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/$P
 
 ADD https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/master/install-php-extensions /usr/local/bin/
 RUN chmod uga+x /usr/local/bin/install-php-extensions && sync && \
-    install-php-extensions imagick
+    install-php-extensions imagick && \
+    install-php-extensions gmp
 RUN docker-php-ext-enable imagick
+RUN docker-php-ext-enable gmp
