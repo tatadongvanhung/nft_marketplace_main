@@ -14,6 +14,7 @@
    docker exec -it nftmarketplacemain-php /bin/sh
 7. On docker container, run 
    - composer install
+   - php artisan key:generate
    - php artisan migrates
    - php artisan db:seed
 8. Access http://localhost/ with a browser to test
