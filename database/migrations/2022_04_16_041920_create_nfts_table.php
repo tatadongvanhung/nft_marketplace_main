@@ -16,7 +16,7 @@ class CreateNftsTable extends Migration
         Schema::create('nfts', function (Blueprint $table) {
             $table->increments('id');
             $table->text('cid');
-            $table->unsignedInteger('album_id');
+            $table->unsignedInteger('album_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
