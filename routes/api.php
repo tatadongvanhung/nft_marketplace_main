@@ -22,5 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::get('/nfts', 'NFT@index')->name('customers.all');
 Route::get('/nft/index', [NFTController::class, 'index'])->name('nft-index');
 Route::get('/nft/get/{cid}', [NFTController::class, 'getNFTByCID'])->name('nft-get-cid');
-Route::post('/nft/create-nft', [NFTController::class, 'createNFT'])->name('create-nft');
+Route::post('/nft/create', [NFTController::class, 'createNFT'])->name('create-nft');
 Route::get('/nft/delete/{cid}', [NFTController::class, 'deleteNFT'])->name('delete-nft');
