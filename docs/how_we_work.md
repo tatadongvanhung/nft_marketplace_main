@@ -15,7 +15,7 @@
 7. On docker container, run 
    - composer install
    - php artisan key:generate
-   - php artisan migrates
+   - php artisan migrate
    - php artisan db:seed
 8. Access http://localhost/ with a browser to test
 
