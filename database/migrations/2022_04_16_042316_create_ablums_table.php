@@ -13,10 +13,10 @@ class CreateAblumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ablums', function (Blueprint $table) {
+        Schema::create('albums', function (Blueprint $table) {
             $table->increments('id');
             $table->text('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +29,6 @@ class CreateAblumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ablums');
+        Schema::dropIfExists('albums');
     }
 }
