@@ -13,9 +13,19 @@
 7. On docker container, run 
    - composer install
    - php artisan key:generate
-   - php artisan migrates
+   - php artisan migrate
    - php artisan db:seed
 8. Access http://localhost/ with a browser to test
 
 ```
 Author: Tran Hoang Giang && Dong Van Hung © 2022
+
+
+API:
+```
+NFT:
+1>Index: GET: http://localhost/api/nft/index
+2>Show: GET: http://localhost/api/nft/get/{cid}
+3>Create: POST: http://localhost/api/nft/create - Với dữ liệu gửi kèm là chuỗi JSON: {"cid":"","album_id":""}.
+4>Delete: GET: http://localhost/api/nft/delete/{cid}
+```
