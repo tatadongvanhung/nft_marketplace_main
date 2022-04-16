@@ -29,3 +29,10 @@ NFT:
 3>Create: POST: http://localhost/api/nft/create - Với dữ liệu gửi kèm là chuỗi JSON: {"cid":"","album_id":""}.
 4>Delete: GET: http://localhost/api/nft/delete/{cid}
 ```
+```
+ALbum:
+1>Index: GET: http://localhost/api/album/index
+2>Show: GET: http://localhost/api/album/get/{id}
+3>Create: POST: http://localhost/api/album/create - Với dữ liệu gửi kèm là chuỗi JSON: {"name":"","description":""}.
+4>Delete: GET: http://localhost/api/album/delete/{id}
+```
