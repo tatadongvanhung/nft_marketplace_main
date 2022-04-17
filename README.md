@@ -30,6 +30,7 @@ NFT:
 4>Delete: GET: http://localhost/api/nft/delete/{cid}
 5>Get list by Album: GET http://localhost/api/nft/album-id/{albumID}
 6>Get list by Genre: GET http://localhost/api/nft/genre-id/{genreID}
+7>Search: GET http://localhost/api/nft/search/{search_string}
 ```
 ```
 Album:
