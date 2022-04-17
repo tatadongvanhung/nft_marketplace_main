@@ -31,6 +31,8 @@ Route::get('/nft/delete/{cid}', [NFTController::class, 'deleteNFT'])->name('dele
 Route::get('/nft/album-id/{id}', [NFTController::class, 'getListByAblumId'])->name('nft-get-list-by-album-id');
 Route::get('/nft/genre-id/{id}', [NFTController::class, 'getListByGenreId'])->name('nft-get-list-by-genre-id');
 
+Route::get('/nft/search/{search}', [NFTController::class, 'search'])->name('nft-search');
+
 # album API
 Route::get('/album/index', [AlbumController::class, 'index'])->name('album-index');
 Route::get('/album/get/{cid}', [AlbumController::class, 'show'])->name('album-get-id');
