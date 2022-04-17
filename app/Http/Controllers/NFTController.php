@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Interfaces\AlbumRepository;
+use App\Repositories\Interfaces\GenreRepository;
 use App\Repositories\Interfaces\NFTRepository;
 use Illuminate\Http\Request;
 
 class NFTController extends Controller
 {
     protected $nftRepository;
+    protected $albumRepository;
+    protected $genreRepository;
 
-    public function __construct(NFTRepository $nftRepository)
-    {
+    public function __construct
+    (
+        NFTRepository $nftRepository, 
+        AlbumRepository $albumRepository,
+        GenreRepository $genreRepository
+    ) {
         $this->nftRepository = $nftRepository;
+        $this->albumRepository = $albumRepository;
+        $this->genreRepository = $genreRepository;
     }
 
     public function index()
@@ -55,6 +65,32 @@ class NFTController extends Controller
             $message = "Delete NFT successful!";
         }
 
+        return response()->json($message, $statusCode);
+    }
+
+    public function getListByAblumId($albumId)
+    {
+        $album = $this->albumRepository->findById($albumId);
+        $statusCode = 404;
+        $message = "Album not found!";
+        if($album) {
+            $statusCode = 200;
+            $nfts = $this->nftRepository->getListNFTbyAlbumId($albumId);
+            return response()->json($nfts, $statusCode);
+        }
+        return response()->json($message, $statusCode);
+    }
+
+    public function getListByGenreId($genreId)
+    {
+        $album = $this->genreRepository->findById($genreId);
+        $statusCode = 404;
+        $message = "Genre not found!";
+        if($album) {
+            $statusCode = 200;
+            $nfts = $this->nftRepository->getListNFTbyGenreId($genreId);
+            return response()->json($nfts, $statusCode);
+        }
         return response()->json($message, $statusCode);
     }
 }

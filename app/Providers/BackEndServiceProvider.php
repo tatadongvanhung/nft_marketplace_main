@@ -17,7 +17,7 @@ class BackEndServiceProvider extends ServiceProvider
             'User',
             'NFT',
             'Album',
-            'ColectionNFT'
+            'Genre'
         ];
 
         foreach ($models as $model) {
