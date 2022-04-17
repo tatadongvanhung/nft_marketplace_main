@@ -96,7 +96,12 @@ class NFTController extends Controller
 
     public function search($search)
     {
-        $result = $this->nftRepository->search($search);
+        $nfts = $this->nftRepository->searchNFT($search);
+        $albums = $this->albumRepository->searchAlbum($search);
+        $result = [
+            'nfts' => $nfts,
+            'albums' =>$albums
+        ];
         return response()->json($result, 200);
     }
 }
