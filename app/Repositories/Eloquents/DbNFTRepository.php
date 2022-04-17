@@ -37,4 +37,22 @@ class DbNFTRepository extends DbRepository implements NFTRepository
     {
         return $this->model->where('genre_id', $genreId)->get();
     }
+
+    public function search($search)
+    {
+        return $this->model
+        ->select(
+            'nfts.*',
+            'albums.name as album_name',
+            'albums.description as album_description',
+            'albums.album_picture',
+        )
+        ->join('albums', function($join){
+            $join->on('albums.id', '=', 'nfts.album_id')
+                ->whereNull('albums.deleted_at');
+        })
+        ->where('nfts.name', 'like', '%' . $search . '%')
+        ->orWhere('albums.name', 'like', '%' . $search . '%')
+        ->get();
+    }
 }

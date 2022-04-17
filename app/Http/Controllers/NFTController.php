@@ -93,4 +93,10 @@ class NFTController extends Controller
         }
         return response()->json($message, $statusCode);
     }
+
+    public function search($search)
+    {
+        $result = $this->nftRepository->search($search);
+        return response()->json($result, 200);
+    }
 }
