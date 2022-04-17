@@ -11,4 +11,6 @@ interface NFTRepository
     public function getListNFTbyGenreId($genreId);
 
     public function search($search);
+
+    public function searchNFT($search);
 }

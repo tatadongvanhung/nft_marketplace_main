@@ -15,4 +15,11 @@ class DbAlbumRepository extends DbRepository implements AlbumRepository
     {
         $this->model = $model;
     } 
+
+    public function searchAlbum($search)
+    {
+        return $this->model
+        ->where('name', 'like', '%' . $search . '%')
+        ->get();
+    }
 }

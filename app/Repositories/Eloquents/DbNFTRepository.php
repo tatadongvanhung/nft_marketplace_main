@@ -55,4 +55,11 @@ class DbNFTRepository extends DbRepository implements NFTRepository
         ->orWhere('albums.name', 'like', '%' . $search . '%')
         ->get();
     }
+
+    public function searchNFT($search)
+    {
+        return $this->model
+        ->where('name', 'like', '%' . $search . '%')
+        ->get();
+    }
 }
