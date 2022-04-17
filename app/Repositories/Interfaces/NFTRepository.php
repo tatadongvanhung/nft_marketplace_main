@@ -6,4 +6,8 @@ interface NFTRepository
 {
     public function getNFTByCID($cid);
 
+    public function getListNFTbyAlbumId($albumId);
+
+    public function getListNFTbyGenreId($genreId);
+
 }

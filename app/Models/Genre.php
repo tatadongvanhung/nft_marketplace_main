@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class NFT extends Model
+class Genre extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = "nfts";
+    protected $table = "genres";
 
     /**
      * The attributes that are mass assignable.
@@ -20,9 +20,8 @@ class NFT extends Model
      */
     protected $fillable = [
         'id',
-        'cid',
-        'album_id',
-        'genre_id'
+        'name',
+        'description',
     ];
 
     protected $dates = [
