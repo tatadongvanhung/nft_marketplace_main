@@ -22,6 +22,7 @@ class Album extends Model
         'id',
         'name',
         'description',
+        'album_picture'
     ];
 
     protected $dates = [
