@@ -44,6 +44,7 @@ class NFTController extends Controller
     {
         $params = [
             'cid' => $request->cid,
+            'name' => $request->name ?? null,
             'album_id' => (int) $request->album_id ?? null,
             'genre_id' => (int) $request->genre_id ?? null,
             'tokenId' => (int) $request->tokenId ?? null,
