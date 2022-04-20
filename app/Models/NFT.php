@@ -24,7 +24,7 @@ class NFT extends Model
         'name',
         'album_id',
         'genre_id',
-        'tokenId'
+        'tokenId',
     ];
 
     protected $dates = [

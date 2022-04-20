@@ -50,7 +50,8 @@ class AlbumController extends Controller
         $params = [
             'name' => $request->name,
             'description' => $request->description ?? null,
-            'album_picture' => $request->album_picture ?? null
+            'album_picture' => $request->album_picture ?? null,
+            'metamask_address' => $request->metamask_address ?? null
         ];
         $album = $this->albumRepository->create($params);
         $statusCode = 200;

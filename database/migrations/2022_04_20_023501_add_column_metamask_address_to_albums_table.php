@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnTokenIdToNftsTable extends Migration
+class AddColumnMetamaskAddressToAlbumsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddColumnTokenIdToNftsTable extends Migration
      */
     public function up()
     {
-        Schema::table('nfts', function (Blueprint $table) {
-            //
-            $table->unsignedInteger('tokenId')->after('genre_id')->nullable();
+        Schema::table('albums', function (Blueprint $table) {
+            $table->text('metamask_address')->nullable()->after('album_picture');
         });
     }
 
@@ -26,9 +25,8 @@ class AddColumnTokenIdToNftsTable extends Migration
      */
     public function down()
     {
-        Schema::table('nfts', function (Blueprint $table) {
-            //
-            $table->dropColumn('tokenId');
+        Schema::table('albums', function (Blueprint $table) {
+            $table->dropColumn('metamask_address');
         });
     }
 }
