@@ -4,6 +4,7 @@ use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NFTController;
 use App\Http\Controllers\TransactionLogController;
+use App\Http\Controllers\UsersController;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -57,3 +58,6 @@ Route::get('/transactionlog/delete/{id}', [TransactionLogController::class, 'del
 Route::get('/transactionlog/get-tokenid/{tokenid}', [TransactionLogController::class, 'getByTokenId'])->name('transactionlog-getByTokenId');
 Route::get('/transactionlog/get-address/{address}', [TransactionLogController::class, 'getByAddress'])->name('transactionlog-getByAddress');
 
+
+Route::get('/users/metamask/{address}', [UsersController::class, 'loginMetamask'])->name('users-metamask');
+Route::post('/users/update/{address}', [UsersController::class, 'update'])->name('users-update');
