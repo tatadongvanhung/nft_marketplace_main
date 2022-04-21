@@ -50,8 +50,24 @@ Genre:
 Transaction log:
 1>Index: GET: http://localhost/api/transactionlog/index
 2>Show: GET: http://localhost/api/transactionlog/get/{id}
-3>Create: POST: http://localhost/api/transactionlog/create json body
+3>Create: POST: http://localhost/api/transactionlog/create 
+{
+    "from": "",
+    "to": "",
+    "action": "",
+    "ethPrice": "",
+    "usdPrice": "",
+    "tokenId": ""
+}
 4>Delete: GET: http://localhost/api/transactionlog/delete/{id}
-4>update: Post: http://localhost/api/transactionlog/update/{id} json body
+4>update: Post: http://localhost/api/transactionlog/update/{id}
+{
+    "from": "",
+    "to": "",
+    "action": "",
+    "ethPrice": "",
+    "usdPrice": "",
+    "tokenId": ""
+}
 
 ```
