@@ -48,6 +48,7 @@ class NFTController extends Controller
             'album_id' => (int) $request->album_id ?? null,
             'genre_id' => (int) $request->genre_id ?? null,
             'tokenId' => (int) $request->tokenId ?? null,
+            'cover_photo' => $request->cover_photo ?? null,
         ];
         $nft = $this->nftRepository->create($params);
         $statusCode = 200;

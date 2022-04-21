@@ -18,12 +18,34 @@ class DbTransactionLogRepository extends DbRepository implements TransactionLogR
 
     public function getTransactionByTokenId($tokenId)
     {
-        return $this->model->where('tokenId', $tokenId)->get();
+        return $this->model
+        ->select(
+            'transactionlogs.*',
+            'nfts.name',
+            'nfts.cover_photo',
+            'nfts.cid'
+        )
+        ->leftjoin('nfts', function($join){
+            $join->on('nfts.tokenId', '=', 'transactionlogs.tokenId')
+                ->whereNull('nfts.deleted_at');
+        })
+        ->where('transactionlogs.tokenId', $tokenId)
+        ->get();
     }
 
     public function getTransactionByAddress($address)
     {
         return $this->model
+        ->select(
+            'transactionlogs.*',
+            'nfts.cid',
+            'nfts.name',
+            'nfts.cover_photo',
+        )
+        ->leftjoin('nfts', function($join){
+            $join->on('nfts.tokenId', '=', 'transactionlogs.tokenId')
+                ->whereNull('nfts.deleted_at');
+        })
         ->where('from', $address)
         ->orwhere('to', $address)
         ->get();
