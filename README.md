@@ -72,3 +72,14 @@ Transaction log:
 6>: GET: http://localhost/api/transactionlog/get-tokenid/{tokenid}
 6>: GET: http://localhost/api/transactionlog/get-address/{address}
 ```
+```
+Transaction log:
+1>GET Find user by metamask_address or add : http://localhost/api/users/metamask/{metamask_address}
+2>POST update user: http://localhost/api/users/update/{metamask_address}
+{
+    "name": "",
+    "description": "",
+    "avatar_picture": "",
+    "cover_picture": ""
+}
+```
