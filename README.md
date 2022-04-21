@@ -46,3 +46,12 @@ Genre:
 3>Create: POST: http://localhost/api/genre/create - Với dữ liệu gửi kèm là chuỗi JSON: {"name":"","description":""}.
 4>Delete: GET: http://localhost/api/genre/delete/{id}
 ```
+```
+Transaction log:
+1>Index: GET: http://localhost/api/transactionlog/index
+2>Show: GET: http://localhost/api/transactionlog/get/{id}
+3>Create: POST: http://localhost/api/transactionlog/create json body
+4>Delete: GET: http://localhost/api/transactionlog/delete/{id}
+4>update: Post: http://localhost/api/transactionlog/update/{id} json body
+
+```

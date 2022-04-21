@@ -3,6 +3,7 @@
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NFTController;
+use App\Http\Controllers\TransactionLogController;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,3 +45,11 @@ Route::get('/genre/index', [GenreController::class, 'index'])->name('genre-index
 Route::get('/genre/get/{cid}', [GenreController::class, 'show'])->name('genre-get-id');
 Route::post('/genre/create', [GenreController::class, 'create'])->name('create-genre');
 Route::get('/genre/delete/{cid}', [GenreController::class, 'delete'])->name('delete-genre');
+
+# Transaction
+Route::get('/transactionlog/index', [TransactionLogController::class, 'index'])->name('transactionlog-index');
+Route::get('/transactionlog/get/{id}', [TransactionLogController::class, 'show'])->name('transactionlog-id');
+Route::post('/transactionlog/create', [TransactionLogController::class, 'create'])->name('create-transactionlog');
+Route::post('/transactionlog/update/{id}', [TransactionLogController::class, 'update'])->name('update-transactionlog');
+Route::get('/transactionlog/delete/{id}', [TransactionLogController::class, 'delete'])->name('delete-transactionlog');
+
