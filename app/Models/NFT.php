@@ -21,9 +21,10 @@ class NFT extends Model
     protected $fillable = [
         'id',
         'cid',
+        'name',
         'album_id',
         'genre_id',
-        'tokenId'
+        'tokenId',
     ];
 
     protected $dates = [
