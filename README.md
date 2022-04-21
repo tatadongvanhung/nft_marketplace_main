@@ -60,7 +60,7 @@ Transaction log:
     "tokenId": ""
 }
 4>Delete: GET: http://localhost/api/transactionlog/delete/{id}
-4>update: Post: http://localhost/api/transactionlog/update/{id}
+5>update: Post: http://localhost/api/transactionlog/update/{id}
 {
     "from": "",
     "to": "",
@@ -69,5 +69,6 @@ Transaction log:
     "usdPrice": "",
     "tokenId": ""
 }
-
+6>: GET: http://localhost/api/transactionlog/get-tokenid/{tokenid}
+6>: GET: http://localhost/api/transactionlog/get-address/{address}
 ```

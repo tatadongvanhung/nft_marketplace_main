@@ -15,4 +15,17 @@ class DbTransactionLogRepository extends DbRepository implements TransactionLogR
     {
         $this->model = $model;
     } 
+
+    public function getTransactionByTokenId($tokenId)
+    {
+        return $this->model->where('tokenId', $tokenId)->get();
+    }
+
+    public function getTransactionByAddress($address)
+    {
+        return $this->model
+        ->where('from', $address)
+        ->orwhere('to', $address)
+        ->get();
+    }
 }

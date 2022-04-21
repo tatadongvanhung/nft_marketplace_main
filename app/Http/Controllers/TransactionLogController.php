@@ -84,4 +84,16 @@ class TransactionLogController extends Controller
         $transaction = $this->transactionLogRepository->findById($id);
         return response()->json($transaction, $statusCode);
     }
+
+    public function getByTokenId($tokenId)
+    {
+        $transaction = $this->transactionLogRepository->getTransactionByTokenId($tokenId);
+        return response()->json($transaction, 200);
+    }
+
+    public function getByAddress($address)
+    {
+        $transaction = $this->transactionLogRepository->getTransactionByAddress($address);
+        return response()->json($transaction, 200);
+    }
 }

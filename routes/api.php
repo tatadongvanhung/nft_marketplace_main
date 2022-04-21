@@ -53,3 +53,7 @@ Route::post('/transactionlog/create', [TransactionLogController::class, 'create'
 Route::post('/transactionlog/update/{id}', [TransactionLogController::class, 'update'])->name('update-transactionlog');
 Route::get('/transactionlog/delete/{id}', [TransactionLogController::class, 'delete'])->name('delete-transactionlog');
 
+
+Route::get('/transactionlog/get-tokenid/{tokenid}', [TransactionLogController::class, 'getByTokenId'])->name('transactionlog-getByTokenId');
+Route::get('/transactionlog/get-address/{address}', [TransactionLogController::class, 'getByAddress'])->name('transactionlog-getByAddress');
+
