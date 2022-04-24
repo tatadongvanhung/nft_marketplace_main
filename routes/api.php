@@ -5,6 +5,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\NFTController;
 use App\Http\Controllers\TransactionLogController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\AuthController;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,11 +21,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+    // Route::get('/nfts', 'NFT@index')->name('customers.all');
+    
 });
 
-// Route::get('/nfts', 'NFT@index')->name('customers.all');
 Route::get('/nft/index', [NFTController::class, 'index'])->name('nft-index');
 Route::get('/nft/get/{cid}', [NFTController::class, 'getNFTByCID'])->name('nft-get-cid');
 Route::post('/nft/create', [NFTController::class, 'createNFT'])->name('create-nft');
@@ -58,5 +74,8 @@ Route::get('/transactionlog/delete/{id}', [TransactionLogController::class, 'del
 Route::get('/transactionlog/get-tokenid/{tokenid}', [TransactionLogController::class, 'getByTokenId'])->name('transactionlog-getByTokenId');
 Route::get('/transactionlog/get-address/{address}', [TransactionLogController::class, 'getByAddress'])->name('transactionlog-getByAddress');
 
-Route::get('/users/metamask/{address}', [UsersController::class, 'loginMetamask'])->name('users-metamask');
+Route::post('/auth/login-metamask', [AuthController::class, 'loginMetamask'])->name('auth-metamask');
+Route::post('/auth/auth-metamask', [AuthController::class, 'authMetamask'])->name('auth-metamask');
+
 Route::post('/users/update/{address}', [UsersController::class, 'update'])->name('users-update');
+

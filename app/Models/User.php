@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
     use SoftDeletes;
@@ -24,6 +25,7 @@ class User extends Authenticatable
     protected $fillable = [
         'id',
         'name',
+        'nonce',
         'description',
         'metamask_address',
         'avatar_picture',
@@ -35,6 +37,19 @@ class User extends Authenticatable
         'created_at',
         'deleted_at',
     ];
+
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims() {
+        return [];
+    }
 
     /**
      * The attributes that should be hidden for serialization.

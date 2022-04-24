@@ -5,48 +5,15 @@ namespace App\Http\Controllers;
 use App\Repositories\Interfaces\UserRepository;
 use Illuminate\Http\Request\Str;
 
+
 class UsersController extends Controller
 {
     protected $userRepository;
 
     public function __construct(UserRepository $userRepository)
     {
+        $this->middleware('auth:api');
         $this->userRepository = $userRepository;
-    }
-
-    // public function loginMetamask($address)
-    // {
-    //     $user = $this->userRepository->findUserByMetamaskAddress($address);
-    //     if (!$user) {
-    //         $params = [
-    //             'metamask_address' => $address,
-    //             'name' => $address
-    //         ];
-    //         $user = $this->userRepository->create($params);
-    //     }
-    //     return response()->json($user, 200);
-    // }
-
-    public function loginMetamask($publicAddress)
-    {
-        $user = $this->userRepository->findUserByMetamaskAddress($address);
-        if (!$user) {
-            $params = [
-                'metamask_address' => $publicAddress,
-                'name' => 'New User',
-                'nonce' => Str::random(9);
-            ];
-            $user = $this->userRepository->create($params);
-        }
-        return response()->json($user, 200);
-    }
-
-    public function authenMetamask($publicAddress,$signature)
-    {
-       //api 
-       $user = $this->userRepository->findUserByMetamaskAddress($address);
-        
-
     }
 
     public function update($address, Request $request)
@@ -54,7 +21,7 @@ class UsersController extends Controller
         $user = $this->userRepository->findUserByMetamaskAddress($address);
         if (!$user) {
             $statusCode = 404;
-            return response()->json('User not found!', $statusCode);
+            return response()->json('User not found !', $statusCode);
         }
         $params = [
             'name' => $request->name ?? null,
