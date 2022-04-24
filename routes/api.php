@@ -58,6 +58,5 @@ Route::get('/transactionlog/delete/{id}', [TransactionLogController::class, 'del
 Route::get('/transactionlog/get-tokenid/{tokenid}', [TransactionLogController::class, 'getByTokenId'])->name('transactionlog-getByTokenId');
 Route::get('/transactionlog/get-address/{address}', [TransactionLogController::class, 'getByAddress'])->name('transactionlog-getByAddress');
 
-
 Route::get('/users/metamask/{address}', [UsersController::class, 'loginMetamask'])->name('users-metamask');
 Route::post('/users/update/{address}', [UsersController::class, 'update'])->name('users-update');

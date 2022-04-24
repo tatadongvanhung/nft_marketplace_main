@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\Interfaces\UserRepository;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request\Str;
 
 class UsersController extends Controller
 {
@@ -14,17 +14,39 @@ class UsersController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    public function loginMetamask($address)
+    // public function loginMetamask($address)
+    // {
+    //     $user = $this->userRepository->findUserByMetamaskAddress($address);
+    //     if (!$user) {
+    //         $params = [
+    //             'metamask_address' => $address,
+    //             'name' => $address
+    //         ];
+    //         $user = $this->userRepository->create($params);
+    //     }
+    //     return response()->json($user, 200);
+    // }
+
+    public function loginMetamask($publicAddress)
     {
         $user = $this->userRepository->findUserByMetamaskAddress($address);
         if (!$user) {
             $params = [
-                'metamask_address' => $address,
-                'name' => $address
+                'metamask_address' => $publicAddress,
+                'name' => 'New User',
+                'nonce' => Str::random(9);
             ];
             $user = $this->userRepository->create($params);
         }
         return response()->json($user, 200);
+    }
+
+    public function authenMetamask($publicAddress,$signature)
+    {
+       //api 
+       $user = $this->userRepository->findUserByMetamaskAddress($address);
+        
+
     }
 
     public function update($address, Request $request)
