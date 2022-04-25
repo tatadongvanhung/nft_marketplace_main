@@ -11,7 +11,7 @@ class Web3LoginController extends Controller
 {
     public function login(Request $request)
     {
-        return view('login-metamask');
+        return null;
     }
 
     public function message(): string

@@ -36,7 +36,6 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
-
     // Route::get('/nfts', 'NFT@index')->name('customers.all');
     
 });
@@ -70,12 +69,14 @@ Route::post('/transactionlog/create', [TransactionLogController::class, 'create'
 Route::post('/transactionlog/update/{id}', [TransactionLogController::class, 'update'])->name('update-transactionlog');
 Route::get('/transactionlog/delete/{id}', [TransactionLogController::class, 'delete'])->name('delete-transactionlog');
 
-
 Route::get('/transactionlog/get-tokenid/{tokenid}', [TransactionLogController::class, 'getByTokenId'])->name('transactionlog-getByTokenId');
 Route::get('/transactionlog/get-address/{address}', [TransactionLogController::class, 'getByAddress'])->name('transactionlog-getByAddress');
 
 Route::post('/auth/login-metamask', [AuthController::class, 'loginMetamask'])->name('auth-metamask');
 Route::post('/auth/auth-metamask', [AuthController::class, 'authMetamask'])->name('auth-metamask');
 
+#users
+Route::get('/users/index', [UsersController::class, 'index'])->name('user-index');
 Route::post('/users/update/{address}', [UsersController::class, 'update'])->name('users-update');
+Route::get('/users/get-user-info', [UsersController::class, 'getUserInfo'])->name('users-info');
 

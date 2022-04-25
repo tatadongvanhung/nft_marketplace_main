@@ -12,8 +12,23 @@ class UsersController extends Controller
 
     public function __construct(UserRepository $userRepository)
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api',['except' => ['index']]);
         $this->userRepository = $userRepository;
+    }
+    public function index()
+    {
+        $users = $this->userRepository->all();
+        return response()->json($users, 200);
+    }
+
+    public function getUserInfo(){
+        $user = auth()->user();
+        if(!$user){
+            $statusCode = 403;
+            return response()->json('User not found !', $statusCode); 
+        }
+        $statusCode = 200;
+        return response()->json($user, $statusCode); 
     }
 
     public function update($address, Request $request)

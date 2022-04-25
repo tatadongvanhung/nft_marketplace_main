@@ -11,7 +11,7 @@ class AlbumController extends Controller
 
     public function __construct(AlbumRepository $albumRepository)
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api',['except' => ['index']]);
         $this->albumRepository = $albumRepository;
     }
     

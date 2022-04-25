@@ -19,7 +19,7 @@ class NFTController extends Controller
         AlbumRepository $albumRepository,
         GenreRepository $genreRepository
     ) {
-        $this->middleware('auth:api', ['except' => ['getListByGenreId','index','getListByAblumId','search']]);
+        $this->middleware('auth:api', ['except' => ['getListByGenreId','getListByAblumId','index','search']]);
         $this->nftRepository = $nftRepository;
         $this->albumRepository = $albumRepository;
         $this->genreRepository = $genreRepository;
