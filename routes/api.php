@@ -55,6 +55,7 @@ Route::get('/album/index', [AlbumController::class, 'index'])->name('album-index
 Route::get('/album/get/{cid}', [AlbumController::class, 'show'])->name('album-get-id');
 Route::post('/album/create', [AlbumController::class, 'create'])->name('create-album');
 Route::get('/album/delete/{cid}', [AlbumController::class, 'delete'])->name('delete-album');
+Route::get('/album/get-by-metamask/{address}', [AlbumController::class, 'getAlbumByMetamaskAddress'])->name('album-get-by');
 
 # genre API
 Route::get('/genre/index', [GenreController::class, 'index'])->name('genre-index');

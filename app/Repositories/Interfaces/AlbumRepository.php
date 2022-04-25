@@ -5,4 +5,6 @@ namespace App\Repositories\Interfaces;
 interface AlbumRepository
 {
     public function searchAlbum($search);
+
+    public function getAlbumByMetamaskAddress($address);
 }

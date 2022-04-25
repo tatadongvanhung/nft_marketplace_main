@@ -22,4 +22,11 @@ class DbAlbumRepository extends DbRepository implements AlbumRepository
         ->where('name', 'like', '%' . $search . '%')
         ->get();
     }
+
+    public function getAlbumByMetamaskAddress($address)
+    {
+        return $this->model
+        ->where('metamask_address', $address)
+        ->get();
+    }
 }

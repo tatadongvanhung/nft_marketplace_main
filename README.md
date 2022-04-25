@@ -38,6 +38,7 @@ Album:
 2>Show: GET: http://localhost/api/album/get/{id}
 3>Create: POST: http://localhost/api/album/create - Với dữ liệu gửi kèm là chuỗi JSON: {"name":"","description":""}.
 4>Delete: GET: http://localhost/api/album/delete/{id}
+5> http://localhost/api/album/get-by-metamask/{metamask_address}
 ```
 ```
 Genre:
