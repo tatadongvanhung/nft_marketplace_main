@@ -11,6 +11,7 @@ class AlbumController extends Controller
 
     public function __construct(AlbumRepository $albumRepository)
     {
+        // $this->middleware('auth:api',['except' => ['index']]);
         $this->albumRepository = $albumRepository;
     }
     
@@ -50,12 +51,20 @@ class AlbumController extends Controller
         $params = [
             'name' => $request->name,
             'description' => $request->description ?? null,
-            'album_picture' => $request->album_picture ?? null
+            'album_picture' => $request->album_picture ?? null,
+            'metamask_address' => $request->metamask_address ?? null
         ];
         $album = $this->albumRepository->create($params);
         $statusCode = 200;
         if (!$album && !$params)
             $statusCode = 404;
         return response()->json($album, $statusCode);
+    }
+
+    public function getAlbumByMetamaskAddress($address)
+    {
+        $albums = $this->albumRepository->getAlbumByMetamaskAddress($address);
+        $statusCode = 200;
+        return response()->json($albums, $statusCode);
     }
 }

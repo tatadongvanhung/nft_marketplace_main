@@ -7,6 +7,7 @@ services:
         - "6380:6379"
 
     mysql:
+      platform: linux/x86_64
       image: mysql:8.0
       container_name: nftmarketplacemain-mysql
       working_dir: /application

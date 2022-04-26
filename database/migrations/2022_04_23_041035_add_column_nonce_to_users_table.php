@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddColumnTokenIdToNftsTable extends Migration
+class AddColumnNonceToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddColumnTokenIdToNftsTable extends Migration
      */
     public function up()
     {
-        Schema::table('nfts', function (Blueprint $table) {
-            //
-            $table->unsignedInteger('tokenId')->after('genre_id')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->text('nonce')->after('description')->nullable();
         });
     }
 
@@ -26,9 +25,8 @@ class AddColumnTokenIdToNftsTable extends Migration
      */
     public function down()
     {
-        Schema::table('nfts', function (Blueprint $table) {
-            //
-            $table->dropColumn('tokenId');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('nonce');
         });
     }
 }

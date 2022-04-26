@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Album extends Model
+class TransactionLog extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = "albums";
+    protected $table = "transactionlogs";
 
     /**
      * The attributes that are mass assignable.
@@ -20,10 +20,12 @@ class Album extends Model
      */
     protected $fillable = [
         'id',
-        'name',
-        'description',
-        'album_picture',
-        'metamask_address'
+        'from',
+        'to',
+        'action',
+        'ethPrice',
+        'usdPrice',
+        'tokenId'
     ];
 
     protected $dates = [

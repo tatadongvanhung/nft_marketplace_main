@@ -22,10 +22,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('login-metamask');
 // });
 
-Route::get('/login-metamask', [Web3LoginController::class, 'login'])->name('login');
-
-Route::get('/web3-login-message', [Web3LoginController::class, 'message'])->name('message');
-Route::post('/web3-login-verify', [Web3LoginController::class, 'verify'])->name('verify');
-
-Route::get('/test', [Web3LoginController::class, 'test'])->name('test');
+// Route::get('/login-metamask', [Web3LoginController::class, 'login'])->name('login');
+// Route::get('/web3-login-message', [Web3LoginController::class, 'message'])->name('message');
+// Route::post('/web3-login-verify', [Web3LoginController::class, 'verify'])->name('verify');
+// Route::get('/test', [Web3LoginController::class, 'test'])->name('test');
 

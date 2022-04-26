@@ -19,6 +19,7 @@ class NFTController extends Controller
         AlbumRepository $albumRepository,
         GenreRepository $genreRepository
     ) {
+        $this->middleware('auth:api', ['except' => ['getListByGenreId','getListByAblumId','index','search']]);
         $this->nftRepository = $nftRepository;
         $this->albumRepository = $albumRepository;
         $this->genreRepository = $genreRepository;
@@ -44,9 +45,11 @@ class NFTController extends Controller
     {
         $params = [
             'cid' => $request->cid,
+            'name' => $request->name ?? null,
             'album_id' => (int) $request->album_id ?? null,
             'genre_id' => (int) $request->genre_id ?? null,
-            'tokenId' => (int) $request->genre_id ?? null,
+            'tokenId' => (int) $request->tokenId ?? null,
+            'cover_photo' => $request->cover_photo ?? null,
         ];
         $nft = $this->nftRepository->create($params);
         $statusCode = 200;

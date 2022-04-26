@@ -38,6 +38,7 @@ Album:
 2>Show: GET: http://localhost/api/album/get/{id}
 3>Create: POST: http://localhost/api/album/create - Với dữ liệu gửi kèm là chuỗi JSON: {"name":"","description":""}.
 4>Delete: GET: http://localhost/api/album/delete/{id}
+5>Get list album by metamask: http://localhost/api/album/get-by-metamask/{metamask_address}
 ```
 ```
 Genre:
@@ -45,4 +46,41 @@ Genre:
 2>Show: GET: http://localhost/api/genre/get/{id}
 3>Create: POST: http://localhost/api/genre/create - Với dữ liệu gửi kèm là chuỗi JSON: {"name":"","description":""}.
 4>Delete: GET: http://localhost/api/genre/delete/{id}
+```
+```
+Transaction log:
+1>Index: GET: http://localhost/api/transactionlog/index
+2>Show: GET: http://localhost/api/transactionlog/get/{id}
+3>Create: POST: http://localhost/api/transactionlog/create 
+{
+    "from": "",
+    "to": "",
+    "action": "",
+    "ethPrice": "",
+    "usdPrice": "",
+    "tokenId": ""
+}
+4>Delete: GET: http://localhost/api/transactionlog/delete/{id}
+5>update: Post: http://localhost/api/transactionlog/update/{id}
+{
+    "from": "",
+    "to": "",
+    "action": "",
+    "ethPrice": "",
+    "usdPrice": "",
+    "tokenId": ""
+}
+6>: GET: http://localhost/api/transactionlog/get-tokenid/{tokenid}
+6>: GET: http://localhost/api/transactionlog/get-address/{address}
+```
+```
+User:
+1>GET Find user by metamask_address or add : http://localhost/api/users/metamask/{metamask_address}, lưu metamask_address = name = request->metamask_address
+2>POST update user: http://localhost/api/users/update/{metamask_address}
+{
+    "name": "",
+    "description": "",
+    "avatar_picture": "",
+    "cover_picture": ""
+}
 ```
