@@ -109,4 +109,14 @@ class NFTController extends Controller
         ];
         return response()->json($result, 200);
     }
+
+    public function show($id)
+    {
+        $nft = $this->nftRepository->findById($id);
+        $statusCode = 200;
+        if (!$nft)
+            $statusCode = 404;
+
+        return response()->json($nft, $statusCode);
+    }
 }

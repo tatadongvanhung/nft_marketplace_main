@@ -50,6 +50,8 @@ Route::get('/nft/genre-id/{id}', [NFTController::class, 'getListByGenreId'])->na
 
 Route::get('/nft/search/{search}', [NFTController::class, 'search'])->name('nft-search');
 
+Route::get('/nft/get-id/{id}', [NFTController::class, 'show'])->name('nft-show');
+
 # album API
 Route::get('/album/index', [AlbumController::class, 'index'])->name('album-index');
 Route::get('/album/get/{cid}', [AlbumController::class, 'show'])->name('album-get-id');
