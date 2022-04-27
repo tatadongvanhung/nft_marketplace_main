@@ -12,7 +12,7 @@ class UsersController extends Controller
 
     public function __construct(UserRepository $userRepository)
     {
-        $this->middleware('auth:api',['except' => ['index']]);
+        // $this->middleware('auth:api',['except' => ['index']]);
         $this->userRepository = $userRepository;
     }
     public function index()
@@ -51,4 +51,17 @@ class UsersController extends Controller
         $user1 = $this->userRepository->findById($user->id);
         return response()->json($user1, $statusCode);
     }
+
+
+    public function getUserByMetamaskAddress($address)
+    {
+        $user = $this->userRepository->findUserByMetamaskAddress($address);
+        $statusCode = 200;
+        if (!$user) {
+            $statusCode = 404;
+            return response()->json('User not found!', $statusCode);
+        }
+        return response()->json($user, $statusCode);
+    }
+
 }

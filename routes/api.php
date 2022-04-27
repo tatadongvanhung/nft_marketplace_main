@@ -82,4 +82,4 @@ Route::post('/auth/auth-metamask', [AuthController::class, 'authMetamask'])->nam
 Route::get('/users/index', [UsersController::class, 'index'])->name('user-index');
 Route::post('/users/update/{address}', [UsersController::class, 'update'])->name('users-update');
 Route::get('/users/get-user-info', [UsersController::class, 'getUserInfo'])->name('users-info');
-
+Route::get('/users/get-user-by-metamask/{metamask_address}', [UsersController::class, 'getUserByMetamaskAddress'])->name('get-user-by-metamask');
