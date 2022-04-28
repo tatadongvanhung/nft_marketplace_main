@@ -32,6 +32,13 @@ NFT:
 6>Get list by Genre: GET http://localhost/api/nft/genre-id/{genreID}
 7>Search: GET http://localhost/api/nft/search/{search_string}
 8>get by id : GET http://localhost/api/nft/get-id/{id}
+
+9> GET http://localhost/api/nft/get-nft-not-in-album
+10> POST http://localhost/api/nft/update-album 
+{
+    "nft_ids": [1,2],
+    "ablum_id": 2
+}
 ```
 ```
 Album:

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Repositories\Interfaces\AlbumRepository;
 use App\Repositories\Interfaces\GenreRepository;
 use App\Repositories\Interfaces\NFTRepository;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class NFTController extends Controller
 {
@@ -19,7 +22,7 @@ class NFTController extends Controller
         AlbumRepository $albumRepository,
         GenreRepository $genreRepository
     ) {
-        $this->middleware('auth:api', ['except' => ['getListByGenreId','getListByAblumId','index','search']]);
+        // $this->middleware('auth:api', ['except' => ['getListByGenreId','getListByAblumId','index','search']]);
         $this->nftRepository = $nftRepository;
         $this->albumRepository = $albumRepository;
         $this->genreRepository = $genreRepository;
@@ -118,5 +121,38 @@ class NFTController extends Controller
             $statusCode = 404;
 
         return response()->json($nft, $statusCode);
+    }
+
+    public function getNFTNotInAblum()
+    {
+        // $user = auth()->user();
+        $statusCode = 200;
+        // if (!$user) {
+        //     $statusCode = 401;
+        //     $message = "Unauthorized";
+        //     return response()->json($message, $statusCode);
+        // }
+        $nft = $this->nftRepository->getNFTNotInAblum();
+        return response()->json($nft, $statusCode);
+    }
+
+    public function updateAlbum(Request $request) {
+        $nft_ids = $request->nft_ids;
+        $albumId = $request->ablum_id ?? '';
+        $statusCode = 200;
+        $message = "Update success!";
+        try {
+            DB::beginTransaction();
+            foreach ($nft_ids as $id) {
+                $this->nftRepository->update(['album_id' => $albumId], $id);
+            }
+            DB::commit();
+            return response()->json($message, $statusCode);
+        } catch(Exception $e) {
+            DB::rollBack();
+            $statusCode = 500;
+            $message = "Update fail!";
+            return response()->json($message, $statusCode);
+        }  
     }
 }

@@ -52,6 +52,9 @@ Route::get('/nft/search/{search}', [NFTController::class, 'search'])->name('nft-
 
 Route::get('/nft/get-id/{id}', [NFTController::class, 'show'])->name('nft-show');
 
+Route::get('/nft/get-nft-not-in-album', [NFTController::class, 'getNFTNotInAblum'])->name('get-nft-not-in-album');
+Route::post('/nft/update-album', [NFTController::class, 'updateAlbum'])->name('nft-update-album');
+
 # album API
 Route::get('/album/index', [AlbumController::class, 'index'])->name('album-index');
 Route::get('/album/get/{cid}', [AlbumController::class, 'show'])->name('album-get-id');
