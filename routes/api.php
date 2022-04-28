@@ -6,6 +6,8 @@ use App\Http\Controllers\NFTController;
 use App\Http\Controllers\TransactionLogController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
+use App\Models\Comment;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -86,3 +88,9 @@ Route::get('/users/index', [UsersController::class, 'index'])->name('user-index'
 Route::post('/users/update/{address}', [UsersController::class, 'update'])->name('users-update');
 Route::get('/users/get-user-info', [UsersController::class, 'getUserInfo'])->name('users-info');
 Route::get('/users/get-user-by-metamask/{metamask_address}', [UsersController::class, 'getUserByMetamaskAddress'])->name('get-user-by-metamask');
+
+#comment
+Route::get('/comments/nft/{nftId}', [CommentController::class, 'commentNFTindex'])->name('comment-nft-index');
+Route::get('/comments/delete/{id}', [CommentController::class, 'delete'])->name('comment-delete');
+Route::post('/comments/create', [CommentController::class, 'create'])->name('comment-create');
+Route::post('/comments/update/{id}', [CommentController::class, 'update'])->name('comment-update');

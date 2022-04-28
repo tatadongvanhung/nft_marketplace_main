@@ -92,3 +92,22 @@ User:
     "cover_picture": ""
 }
 ```
+
+
+```
+Comments:
+1> GET comment by NFT_ID: http://localhost/api/comments/nft/{nftId}
+2> POST: create comment
+{
+    "nft_id": ,
+    "metamask_address": "",
+    "content": ""
+}
+3> POST: update comment: http://localhost/api/comments/update/4
+{
+    "content": ""
+}
+4> GET: Delete comment: http://localhost/api/comments/delete/{Id}
+
+
+```
