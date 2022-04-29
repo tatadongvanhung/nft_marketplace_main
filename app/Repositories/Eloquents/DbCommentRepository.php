@@ -20,6 +20,7 @@ class DbCommentRepository extends DbRepository implements CommentRepository
     {
         return $this->model
         ->where('nft_id', $nftId)
+        ->orderBy('id', 'desc')
         ->get();
     }
 }
