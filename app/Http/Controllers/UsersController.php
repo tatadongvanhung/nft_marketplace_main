@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\Interfaces\UserRepository;
 use Illuminate\Http\Request\Str;
+use Illuminate\Http\Request;
 
 
 class UsersController extends Controller
@@ -62,6 +63,13 @@ class UsersController extends Controller
             return response()->json('User not found!', $statusCode);
         }
         return response()->json($user, $statusCode);
+    }
+
+    public function getListUserByListAddress(Request $request)
+    {
+        $users = $this->userRepository->getListUserByListAddress($request->address);
+        $statusCode = 200;
+        return response()->json($users, $statusCode);
     }
 
 }

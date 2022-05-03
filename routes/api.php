@@ -90,6 +90,8 @@ Route::post('/users/update/{address}', [UsersController::class, 'update'])->name
 Route::get('/users/get-user-info', [UsersController::class, 'getUserInfo'])->name('users-info');
 Route::get('/users/get-user-by-metamask/{metamask_address}', [UsersController::class, 'getUserByMetamaskAddress'])->name('get-user-by-metamask');
 
+Route::put('/users/get-list-user-by-address', [UsersController::class, 'getListUserByListAddress'])->name('et-list-user-by-address');
+
 #comment
 Route::get('/comments/nft/{nftId}', [CommentController::class, 'commentNFTindex'])->name('comment-nft-index');
 Route::get('/comments/delete/{id}', [CommentController::class, 'delete'])->name('comment-delete');

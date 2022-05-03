@@ -95,6 +95,10 @@ User:
     "avatar_picture": "",
     "cover_picture": ""
 }
+3>PUT: list user by list address: http://localhost/api/users/get-list-user-by-address
+{
+    "address": ["hung", "0x59ea58BF0e42354759AB820Fc707FA5Ff42d13e1"]
+}
 ```
 
 
