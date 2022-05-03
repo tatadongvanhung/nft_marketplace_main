@@ -39,6 +39,10 @@ NFT:
     "nft_ids": [1,2],
     "ablum_id": 2
 }
+10> PUT: api/nft/get-nft-by-tokenid-ablum-null
+{
+    "token_ids": [1,2,3,4]
+}
 ```
 ```
 Album:

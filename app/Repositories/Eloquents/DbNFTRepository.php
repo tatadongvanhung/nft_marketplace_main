@@ -70,4 +70,15 @@ class DbNFTRepository extends DbRepository implements NFTRepository
         ->orWhereNull('album_id')
         ->get();
     }
+
+    public function getByTokenIdAndAbumNull($tokenIds)
+    {
+        return $this->model
+        ->whereIn('tokenId', $tokenIds)
+        ->where(function($sub) {
+            $sub->where('album_id', 0);
+            $sub->orWhereNull('album_id');
+        })
+        ->get();
+    }
 }

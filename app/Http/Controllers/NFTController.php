@@ -22,7 +22,7 @@ class NFTController extends Controller
         AlbumRepository $albumRepository,
         GenreRepository $genreRepository
     ) {
-        $this->middleware('auth:api', ['except' => ['getListByGenreId','getListByAblumId','index','search']]);
+        // $this->middleware('auth:api', ['except' => ['getListByGenreId','getListByAblumId','index','search']]);
         $this->nftRepository = $nftRepository;
         $this->albumRepository = $albumRepository;
         $this->genreRepository = $genreRepository;
@@ -154,5 +154,13 @@ class NFTController extends Controller
             $message = "Update fail!";
             return response()->json($message, $statusCode);
         }  
+    }
+
+    public function getByAlbumNull(Request $request)
+    {
+        $tokenIds=$request->token_ids;
+        $nfts = $this->nftRepository->getByTokenIdAndAbumNull($tokenIds);
+        $statusCode = 200;
+        return response()->json($nfts, $statusCode);
     }
 }
