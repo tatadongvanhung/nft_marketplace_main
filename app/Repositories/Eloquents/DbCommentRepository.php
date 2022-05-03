@@ -19,6 +19,15 @@ class DbCommentRepository extends DbRepository implements CommentRepository
     public function getCommentByNFTId($nftId)
     {
         return $this->model
+        ->select(
+            'comments.*',
+            'users.name as user_name',
+            'users.avatar_picture'
+        )
+        ->leftjoin('users', function($join){
+                $join->on('users.metamask_address', '=', 'comments.metamask_address')
+                    ->whereNull('users.deleted_at');
+            })
         ->where('nft_id', $nftId)
         ->orderBy('id', 'desc')
         ->get();
