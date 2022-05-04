@@ -137,14 +137,15 @@ class NFTController extends Controller
     }
 
     public function updateAlbum(Request $request) {
-        $nft_ids = $request->nft_ids;
+        $token_ids = $request->token_ids;
         $albumId = $request->ablum_id ?? '';
         $statusCode = 200;
         $message = "Update success!";
         try {
             DB::beginTransaction();
-            foreach ($nft_ids as $id) {
-                $this->nftRepository->update(['album_id' => $albumId], $id);
+            foreach ($token_ids as $token) {
+                $nft = $this->nftRepository->findNFTByTokenId($token);
+                $this->nftRepository->update(['album_id' => $albumId], $nft->id);
             }
             DB::commit();
             return response()->json($message, $statusCode);

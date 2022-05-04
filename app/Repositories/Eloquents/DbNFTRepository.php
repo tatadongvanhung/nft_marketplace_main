@@ -81,4 +81,9 @@ class DbNFTRepository extends DbRepository implements NFTRepository
         })
         ->get();
     }
+
+    public function findNFTByTokenId($tokenId)
+    {
+        return $this->model->where('tokenId', $tokenId)->first();
+    }
 }
