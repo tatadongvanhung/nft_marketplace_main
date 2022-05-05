@@ -29,6 +29,7 @@ class DbTransactionLogRepository extends DbRepository implements TransactionLogR
             $join->on('nfts.tokenId', '=', 'transactionlogs.tokenId')
                 ->whereNull('nfts.deleted_at');
         })
+        ->orderBy('transactionlogs.id', 'desc')
         ->where('transactionlogs.tokenId', $tokenId)
         ->get();
     }
@@ -48,6 +49,7 @@ class DbTransactionLogRepository extends DbRepository implements TransactionLogR
         })
         ->where('from', $address)
         ->orwhere('to', $address)
+        ->orderBy('transactionlogs.id', 'desc')
         ->get();
     }
 }

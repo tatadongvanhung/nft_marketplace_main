@@ -20,4 +20,9 @@ class DbUserRepository extends DbRepository implements UserRepository
     {
         return $this->model->where('metamask_address', $address)->first();
     }
+
+    public function getListUserByListAddress($address)
+    {
+        return $this->model->whereIn('metamask_address', $address)->get();
+    }
 }

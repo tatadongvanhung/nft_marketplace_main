@@ -31,6 +31,18 @@ NFT:
 5>Get list by Album: GET http://localhost/api/nft/album-id/{albumID}
 6>Get list by Genre: GET http://localhost/api/nft/genre-id/{genreID}
 7>Search: GET http://localhost/api/nft/search/{search_string}
+8>get by id : GET http://localhost/api/nft/get-id/{id}
+
+9> GET http://localhost/api/nft/get-nft-not-in-album
+10> POST http://localhost/api/nft/update-album 
+{
+    "nft_ids": [1,2],
+    "ablum_id": 2
+}
+10> PUT: api/nft/get-nft-by-tokenid-ablum-null
+{
+    "token_ids": [1,2,3,4]
+}
 ```
 ```
 Album:
@@ -38,6 +50,7 @@ Album:
 2>Show: GET: http://localhost/api/album/get/{id}
 3>Create: POST: http://localhost/api/album/create - Với dữ liệu gửi kèm là chuỗi JSON: {"name":"","description":""}.
 4>Delete: GET: http://localhost/api/album/delete/{id}
+5>Get list album by metamask: http://localhost/api/album/get-by-metamask/{metamask_address}
 ```
 ```
 Genre:
@@ -82,4 +95,27 @@ User:
     "avatar_picture": "",
     "cover_picture": ""
 }
+3>PUT: list user by list address: http://localhost/api/users/get-list-user-by-address
+{
+    "address": ["hung", "0x59ea58BF0e42354759AB820Fc707FA5Ff42d13e1"]
+}
+```
+
+
+```
+Comments:
+1> GET comment by NFT_ID: http://localhost/api/comments/nft/{nftId}
+2> POST: create comment
+{
+    "nft_id": ,
+    "metamask_address": "",
+    "content": ""
+}
+3> POST: update comment: http://localhost/api/comments/update/4
+{
+    "content": ""
+}
+4> GET: Delete comment: http://localhost/api/comments/delete/{Id}
+
+
 ```

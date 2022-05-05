@@ -13,4 +13,10 @@ interface NFTRepository
     public function search($search);
 
     public function searchNFT($search);
+
+    public function getNFTNotInAblum();
+
+    public function getByTokenIdAndAbumNull($tokenIds);
+
+    public function findNFTByTokenId($tokenId);
 }
