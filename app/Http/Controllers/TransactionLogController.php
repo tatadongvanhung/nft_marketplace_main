@@ -11,7 +11,7 @@ class TransactionLogController extends Controller
 
     public function __construct(TransactionLogRepository $transactionLogRepository)
     {
-        $this->middleware('auth:api');
+        // $this->middleware('auth:api');
         $this->transactionLogRepository = $transactionLogRepository;
     }
 
