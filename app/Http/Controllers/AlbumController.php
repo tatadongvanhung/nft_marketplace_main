@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\Interfaces\AlbumRepository;
+use App\Repositories\Interfaces\NFTRepository;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AlbumController extends Controller
 {
     protected $albumRepository;
+    protected $nftRepository;
 
-    public function __construct(AlbumRepository $albumRepository)
+    public function __construct(AlbumRepository $albumRepository, NFTRepository $nftRepository)
     {
         // $this->middleware('auth:api',['except' => ['index']]);
         $this->albumRepository = $albumRepository;
+        $this->nftRepository = $nftRepository;
     }
     
     public function index()
@@ -38,11 +43,22 @@ class AlbumController extends Controller
         $statusCode = 404;
         $message = "Album not found!";
         if ($album) {
-            $this->albumRepository->destroy($id);
             $statusCode = 200;
             $message = "Delete Album successful!";
+            try {
+                $nfts = $this->nftRepository->findWhere(['album_id' => $id]);
+                DB::beginTransaction();
+                $this->albumRepository->destroy($id);
+                foreach($nfts as $nft) {
+                    $this->nftRepository->update(['album_id' => NULL], $nft->id);
+                }
+                DB::commit();
+            } catch(Exception $ex) {
+                DB::rollBack();
+                $statusCode = 500;
+                $message = "Delete Album fail!";
+            }
         }
-
         return response()->json($message, $statusCode);
     }
 
