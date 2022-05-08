@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquents;
 
 use App\Models\User;
 use App\Repositories\Interfaces\UserRepository;
+use Illuminate\Support\Facades\DB;
 
 class DbUserRepository extends DbRepository implements UserRepository
 {
@@ -24,5 +25,16 @@ class DbUserRepository extends DbRepository implements UserRepository
     public function getListUserByListAddress($address)
     {
         return $this->model->whereIn('metamask_address', $address)->get();
+    }
+
+    public function countUserInTime($from, $to)
+    {
+        if(!empty($from) && !empty($to)) {
+            return $this->model
+            ->where(DB::raw('DATE(created_at)'), '>=', $from)
+            ->where(DB::raw('DATE(created_at)'), '<=', $to)
+            ->withTrashed()->count();
+        }
+        return $this->model->withTrashed()->count();
     }
 }
