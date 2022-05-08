@@ -47,7 +47,6 @@ class NFTController extends Controller
     public function createNFT(Request $request)
     {
         $params = [
-            'cid' => $request->cid,
             'name' => $request->name ?? null,
             'album_id' => (int) $request->album_id ?? null,
             'genre_id' => (int) $request->genre_id ?? null,
