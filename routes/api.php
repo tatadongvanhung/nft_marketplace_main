@@ -7,6 +7,7 @@ use App\Http\Controllers\TransactionLogController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReportController;
 use App\Models\Comment;
 use App\Models\Genre;
 use Illuminate\Http\Request;
@@ -97,3 +98,5 @@ Route::get('/comments/nft/{nftId}', [CommentController::class, 'commentNFTindex'
 Route::get('/comments/delete/{id}', [CommentController::class, 'delete'])->name('comment-delete');
 Route::post('/comments/create', [CommentController::class, 'create'])->name('comment-create');
 Route::post('/comments/update/{id}', [CommentController::class, 'update'])->name('comment-update');
+
+Route::get('/reports/dashboard', [ReportController::class, 'index'])->name('report-dashboard');

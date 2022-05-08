@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquents;
 
 use App\Models\Album;
 use App\Repositories\Interfaces\AlbumRepository;
+use Illuminate\Support\Facades\DB;
 
 class DbAlbumRepository extends DbRepository implements AlbumRepository
 {
@@ -28,5 +29,16 @@ class DbAlbumRepository extends DbRepository implements AlbumRepository
         return $this->model
         ->where('metamask_address', $address)
         ->get();
+    }
+
+    public function countAlbumInTime($from, $to)
+    {
+        if(!empty($from) && !empty($to)) {
+            return $this->model
+            ->where(DB::raw('DATE(created_at)'), '>=', $from)
+            ->where(DB::raw('DATE(created_at)'), '<=', $to)
+            ->withTrashed()->count();
+        }
+        return $this->model->withTrashed()->count();
     }
 }

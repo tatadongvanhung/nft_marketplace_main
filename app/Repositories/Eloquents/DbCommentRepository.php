@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquents;
 
 use App\Models\Comment;
 use App\Repositories\Interfaces\CommentRepository;
+use Illuminate\Support\Facades\DB;
 
 class DbCommentRepository extends DbRepository implements CommentRepository
 {
@@ -31,5 +32,16 @@ class DbCommentRepository extends DbRepository implements CommentRepository
         ->where('nft_id', $nftId)
         ->orderBy('id', 'desc')
         ->get();
+    }
+
+    public function countCommentInTime($from, $to)
+    {
+        if(!empty($from) && !empty($to)) {
+            return $this->model
+            ->where(DB::raw('DATE(created_at)'), '>=', $from)
+            ->where(DB::raw('DATE(created_at)'), '<=', $to)
+            ->withTrashed()->count();
+        }
+        return $this->model->withTrashed()->count();
     }
 }
