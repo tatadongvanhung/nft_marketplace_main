@@ -15,7 +15,7 @@ class AlbumController extends Controller
 
     public function __construct(AlbumRepository $albumRepository, NFTRepository $nftRepository)
     {
-        // $this->middleware('auth:api',['except' => ['index']]);
+        $this->middleware('auth:api',['except' => ['index']]);
         $this->albumRepository = $albumRepository;
         $this->nftRepository = $nftRepository;
     }
