@@ -60,10 +60,9 @@ class NFTController extends Controller
         return response()->json($nft, $statusCode);
     }
 
-    public function deleteNFT($cid)
+    public function deleteNFT($id)
     {
-        $nft = $this->nftRepository->getNFTByCID($cid);
-
+        $nft = $this->nftRepository->findById($id);
         $statusCode = 404;
         $message = "NFT not found!";
         if ($nft) {
