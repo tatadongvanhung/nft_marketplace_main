@@ -163,4 +163,17 @@ class NFTController extends Controller
         $statusCode = 200;
         return response()->json($nfts, $statusCode);
     }
+
+    public function update($id, Request $request)
+    {
+        $nft = $this->nftRepository->findById($id);
+        $statusCode = 200;
+        $message = "Update success!";
+        if(!$nft) {
+            $statusCode = 404;
+            $message = "NFT not found!";
+        } 
+        $update = $this->nftRepository->update(['tokenId' => $request->tokenId], $id);
+        return response()->json($message, $statusCode);
+    }
 }

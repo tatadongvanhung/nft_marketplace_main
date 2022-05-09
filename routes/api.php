@@ -46,6 +46,7 @@ Route::group([
 Route::get('/nft/index', [NFTController::class, 'index'])->name('nft-index');
 Route::get('/nft/get/{cid}', [NFTController::class, 'getNFTByCID'])->name('nft-get-cid');
 Route::post('/nft/create', [NFTController::class, 'createNFT'])->name('create-nft');
+Route::post('/nft/update-token/{nft_id}', [NFTController::class, 'update'])->name('update-token-nft');
 Route::get('/nft/delete/{cid}', [NFTController::class, 'deleteNFT'])->name('delete-nft');
 Route::put('/nft/get-nft-by-tokenid-ablum-null', [NFTController::class, 'getByAlbumNull'])->name('get-nft-by-tokenid-ablum-null');
 
