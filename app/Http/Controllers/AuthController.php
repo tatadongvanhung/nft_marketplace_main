@@ -65,8 +65,18 @@ class AuthController extends Controller
                 'nonce' => $nonce
             ];
             $user = $this->userRepository->create($params);
+            $name = 'New User ' . $this->prefixZero($user->id, 5);
+            $this->userRepository->update(['name' => $name], $user->id);
         }
         return response()->json($user, 200);
+    }
+
+    public static function prefixZero($source, $size)
+    {
+        if (preg_match('/^([0-9])+$/', $source)) {
+            return str_pad($source, $size, '0', STR_PAD_LEFT);
+        }
+        return $source;
     }
 
     public function authMetamask(Request $request)
